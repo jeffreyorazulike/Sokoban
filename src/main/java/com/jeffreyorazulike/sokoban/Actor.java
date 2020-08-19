@@ -414,8 +414,10 @@ public class Actor implements Serializable {
         }
 
         public void move(Actor[][] actors, int keyCode) throws SokobanException, ArrayIndexOutOfBoundsException {
+            int[] move = Actor.move(keyCode);
 
-            Actor.move(actors, this, Actor.move(keyCode));
+            if (move != null)
+                Actor.move(actors, this, move);
         }
 
     }

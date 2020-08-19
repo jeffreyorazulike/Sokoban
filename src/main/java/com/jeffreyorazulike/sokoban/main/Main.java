@@ -48,7 +48,9 @@ public class Main extends JFrame {
         sokobanButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                sokoban = null;
+                if (sokoban != null)
+                    sokoban.dispose();
+
                 sokoban = new Sokoban(Main.this);
             }
         });
@@ -56,7 +58,9 @@ public class Main extends JFrame {
         levelBuilderButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                levelBuilder = null;
+                if (levelBuilder != null)
+                    levelBuilder.dispose();
+
                 levelBuilder = new LevelBuilder(Main.this);
             }
         });
