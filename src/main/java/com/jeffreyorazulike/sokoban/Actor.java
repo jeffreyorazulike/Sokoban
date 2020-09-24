@@ -289,16 +289,11 @@ public class Actor implements Serializable {
      */
     public static Actor getActor(char character, int row, int column) {
         return switch (character) {
-            case WALL ->
-                new Actor().new Wall(row, column);
-            case BAGGAGE ->
-                new Actor().new Baggage(row, column);
-            case PLAYER ->
-                new Actor().new Player(row, column);
-            case AREA ->
-                new Actor().new Area(row, column);
-            default ->
-                null;
+            case WALL -> new Actor().new Wall(row, column);
+            case BAGGAGE -> new Actor().new Baggage(row, column);
+            case PLAYER -> new Actor().new Player(row, column);
+            case AREA -> new Actor().new Area(row, column);
+            default -> null;
         };
     }
 
@@ -309,21 +304,14 @@ public class Actor implements Serializable {
      */
     public static int[] move(final int AREA) {
 
-        switch (AREA) {
-            case UP -> {
-                return UP_MOVE;
-            }
-            case DOWN -> {
-                return DOWN_MOVE;
-            }
-            case LEFT -> {
-                return LEFT_MOVE;
-            }
-            case RIGHT -> {
-                return RIGHT_MOVE;
-            }
-        }
-        return null;
+        return switch (AREA) {
+            case UP -> UP_MOVE;
+            case DOWN -> DOWN_MOVE;
+            case LEFT -> LEFT_MOVE;
+            case RIGHT -> RIGHT_MOVE;
+            default -> null;
+        };
+
     }
 
     /**
@@ -331,6 +319,7 @@ public class Actor implements Serializable {
      * @param actors the placeholder for actors
      * @param actor  the actor to move
      * @param move   the amount of rows and columns to move the actor
+     * @return true if the actor has moved
      *
      * @throws SokobanException               if one of the parameters was null
      *                                        or one of the moves values didn't

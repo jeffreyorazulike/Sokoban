@@ -60,19 +60,18 @@ public class Sokoban extends JDialog {
     /**
      * How the game's world is arranged
      */
-    private String level = """
-                                     ######
-                                     ##   #
-                                     ##$  #
-                                   ####  $##
-                                   ##  $ $ #
-                                 #### # ## #   ######
-                                 ##   # ## #####  ..#
-                                 ## $  $          ..#
-                                 ###### ### #@##  ..#
-                                     ##     #########
-                                     ########
-                                 """;
+    private String level
+            = "    ######\n"
+            + "    ##   #\n"
+            + "    ##$  #\n"
+            + "  ####  $##\n"
+            + "  ##  $ $ #\n"
+            + "#### # ## #   ######\n"
+            + "##   # ## #####  ..#\n"
+            + "## $  $          ..#\n"
+            + "###### ### #@##  ..#\n"
+            + "    ##     #########\n"
+            + "    ########\n";
 
     /**
      * The name of the program
@@ -120,8 +119,8 @@ public class Sokoban extends JDialog {
 
             for (Actor[] actor : actors) {
                 for (Actor actor1 : actor) {
-                    if (actor1 instanceof Actor.Player player1)
-                        player = player1;
+                    if (actor1 instanceof Actor.Player)
+                        player = (Actor.Player) actor1;
                 }
             }
 

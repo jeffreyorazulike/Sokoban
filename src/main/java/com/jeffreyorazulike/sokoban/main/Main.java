@@ -65,9 +65,9 @@ public class Main extends JFrame {
             }
         });
 
-        setLayout(new GridLayout(1, 2, 5, 5));
+        setLayout(new GridLayout(1, 1, 5, 5));
         add(sokobanButton);
-        add(levelBuilderButton);
+        // add(levelBuilderButton);
 
         pack();
         setVisible(true);

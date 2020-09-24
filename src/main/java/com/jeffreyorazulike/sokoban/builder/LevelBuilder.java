@@ -17,6 +17,7 @@
 package com.jeffreyorazulike.sokoban.builder;
 
 import com.jeffreyorazulike.sokoban.Actor;
+import com.jeffreyorazulike.sokoban.Sokoban;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
@@ -39,7 +40,7 @@ import javax.swing.JTextField;
  *
  * @author Jeffrey Orazulike <bit.ly/jeffreyorazulike>
  */
-public class LevelBuilder extends JDialog {
+public class LevelBuilder extends JFrame {
 
     public static final String PROGRAM_NAME = "Sokoban Level Builder";
     private int row, column;
@@ -48,10 +49,9 @@ public class LevelBuilder extends JDialog {
     private Actor actor;
 
     public LevelBuilder(JFrame parent) {
-        super(parent, PROGRAM_NAME);
+        super(PROGRAM_NAME);
 
-        RowAndColumn rowAndColumn = new RowAndColumn(parent);
-        rowAndColumn = null;
+        new RowAndColumn(parent).dispose();
 
         ActorPanel[][] actors = new ActorPanel[row][column];
 
@@ -63,12 +63,14 @@ public class LevelBuilder extends JDialog {
             for (int j = 0; j < actors.length; ++j) {
                 actors[i][j] = new ActorPanel(null, true);
                 actors[i][j].setFocusable(true);
+                actors[i][j].setBackground(Sokoban.BACKGROUND_COLOR);
                 actorsPanel.add(actors[i][j]);
             }
         }
 
         JPanel imagesPanel = new JPanel();
         imagesPanel.setLayout(new GridLayout(4, 1, 3, 3));
+        imagesPanel.setMinimumSize(new Dimension(40, imagesPanel.getHeight()));
         ActorPanel[] images = new ActorPanel[4];
 
         images[0] = new ActorPanel(Actor.getActor(Actor.AREA, 0, 0), false);
@@ -88,7 +90,7 @@ public class LevelBuilder extends JDialog {
         add(imagesPanel, BorderLayout.WEST);
         add(save, BorderLayout.SOUTH);
 
-        pack();
+        setSize(640, 480);
 
         setDefaultCloseOperation(DISPOSE_ON_CLOSE);
         setVisible(true);
