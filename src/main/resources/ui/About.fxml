@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.layout.BorderPane?>
+
+<BorderPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" stylesheets="@Sokoban.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.jeffreyorazulike.sokoban.controller.AboutController">
+   <center>
+      <TextArea fx:id="licenseText" editable="false" maxWidth="1.7976931348623157E308" wrapText="true" BorderPane.alignment="CENTER" />
+   </center>
+</BorderPane>

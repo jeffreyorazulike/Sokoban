@@ -1,0 +1,17 @@
+.root{
+    -fx-background-color: #333;
+    -fx-font-family: "Consolas";
+}
+
+.button {
+    -fx-background-color: #8A2BE2;
+    -fx-text-fill: white;
+    -fx-font-size: 15px;
+}
+
+.button:hover, button:pressed{
+    -fx-background-color: #9400D3;
+    -fx-cursor: hand;
+    -fx-scale-x: 1.05;
+    -fx-scale-y: 1.05;
+}
