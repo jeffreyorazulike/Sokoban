@@ -44,8 +44,8 @@ import javafx.stage.Stage;
  */
 public class LevelBuilderController extends Controller implements SokobanIO, ActorWorker, LevelWorker {
 
-    private final int MAX_HEIGHT = 33;
-    private final int MAX_WIDTH = MAX_HEIGHT + 20;
+    private final int MAX_HEIGHT = 12;
+    private final int MAX_WIDTH = MAX_HEIGHT * 2;
 
     private Image currentImage = WALL_IMAGE;
 

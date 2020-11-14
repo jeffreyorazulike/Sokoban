@@ -62,7 +62,6 @@ public class SokobanController extends Controller {
         gameController.ifPresentOrElse(controller -> {
             changeView(controller);
             ((BorderPane) controller.getRoot()).getCenter().requestFocus();
-            getStage().setMaximized(false);
         }, () -> {
             gameController = Optional.ofNullable(getView("/ui/Game.fxml"));
             play(event);
@@ -73,7 +72,6 @@ public class SokobanController extends Controller {
     public void buildLevel(ActionEvent event) {
         levelBuilderController.ifPresentOrElse(controller -> {
             changeView(controller);
-            //getStage().setMaximized(true);
         }, () -> {
             levelBuilderController = Optional.ofNullable(getView("/ui/LevelBuilder.fxml"));
             buildLevel(event);
@@ -84,7 +82,6 @@ public class SokobanController extends Controller {
     public void about(ActionEvent event) {
         aboutController.ifPresentOrElse(controller -> {
             changeView(controller);
-            getStage().setMaximized(false);
         }, () -> {
             aboutController = Optional.ofNullable(getView("/ui/About.fxml"));
             about(event);
@@ -101,8 +98,8 @@ public class SokobanController extends Controller {
     public void initialize(Stage stage) {
         Platform.runLater(() -> {
             this.stage = stage;
-            stage.setMinWidth(640);
-            stage.setMinHeight(400);
+            stage.setMinWidth(700);
+            stage.setMinHeight(480);
             stage.setTitle(SokobanConstants.GAME_NAME);
             stage.setResizable(false);
             stage.setOnCloseRequest((window) -> exit());

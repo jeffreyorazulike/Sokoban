@@ -3,8 +3,11 @@
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.layout.BorderPane?>
 
-<BorderPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" stylesheets="@Sokoban.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.jeffreyorazulike.sokoban.controller.AboutController">
-   <center>
-      <TextArea fx:id="licenseText" editable="false" maxWidth="1.7976931348623157E308" wrapText="true" BorderPane.alignment="CENTER" />
-   </center>
+<BorderPane stylesheets="@Sokoban.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.jeffreyorazulike.sokoban.controller.AboutController">
+   <bottom>
+      <TextArea editable="false" text="For Gameplay:&#10;  Use W, A, S, D to move the player&#10;&#10;For Level Building:&#10;  The max amount of rows for a level is 12 and columns is 24. &#10;You can build a level however you like but there must be a wall at the beginning and end of each row, only one player and the amount of baggage must be equal to the amount of area and the baggage/area count must be more than one.&#10;&#10;Thank You." wrapText="true" BorderPane.alignment="CENTER" />
+   </bottom>
+   <top>
+      <TextArea fx:id="licenseText" editable="false" wrapText="true" BorderPane.alignment="CENTER" />
+   </top>
 </BorderPane>

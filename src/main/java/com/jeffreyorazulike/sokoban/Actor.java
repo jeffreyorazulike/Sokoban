@@ -35,26 +35,21 @@ import javafx.scene.shape.Rectangle;
  */
 public class Actor extends Group implements Serializable {
 
+    // The row and column of the actor in a grid/array
     private int row, column;
 
+    // should the actor be able to move
     private final boolean isMovable;
 
+    // the actor's image
     private transient Image image;
 
-    /**
-     *
-     * @param row     the thisRow of the actor
-     * @param column  the thisColumn of the actor
-     * @param image   the actor's image
-     * @param movable if the actor is movable
-     */
     private Actor(int row, int column, Image image, boolean movable) {
-        setPosition(row, column);
+        setRow(row);
+        setColumn(column);
 
         maxWidth(SPACE);
         maxHeight(SPACE);
-
-        setPosition(row, column);
 
         if (image != null)
             setImage(image);
@@ -62,31 +57,21 @@ public class Actor extends Group implements Serializable {
         isMovable = movable;
     }
 
-    /**
-     *
-     * @param row    the position of the actor on the board
-     * @param column the position of the actor on the board
-     */
-    public final void setPosition(int row, int column) {
-        setRow(row);
-        setColumn(column);
-    }
-
-    public void setRow(int row) {
+    public final void setRow(int row) {
         this.row = row;
         setLayoutY(row * SPACE);
     }
 
-    public int getRow() {
+    public final int getRow() {
         return row;
     }
 
-    public void setColumn(int column) {
+    public final void setColumn(int column) {
         this.column = column;
         setLayoutX(column * SPACE);
     }
 
-    public int getColumn() {
+    public final int getColumn() {
         return column;
     }
 
@@ -97,7 +82,8 @@ public class Actor extends Group implements Serializable {
         getChildren().remove(0, getChildren().size());
         getChildren().add(imageView);
 
-        setPosition(row, column);
+        setRow(row);
+        setColumn(column);
 
         imageView.setX((SPACE - image.getWidth()) / 2);
         imageView.setY((SPACE - image.getHeight()) / 2);
@@ -140,7 +126,8 @@ public class Actor extends Group implements Serializable {
         Actor temp = model.getActors()[movedRow][movedColumn];
         model.getActors()[movedRow][movedColumn] = this;
         model.getActors()[getRow()][getColumn()] = temp;
-        setPosition(movedRow, movedColumn);
+        setRow(movedRow);
+        setColumn(movedColumn);
     }
 
     private boolean move(GameModel model, GameModel.Undo undo, Actor actor, int[] move) {
@@ -201,7 +188,7 @@ public class Actor extends Group implements Serializable {
 
     /**
      *
-     * @param character   the character representing the object
+     * @param character   the character representing the actor
      * @param row         the position of the actor on the board
      * @param column      the position of the actor on the board
      * @param returnEmpty the value to be returned when a non recognized or
@@ -224,6 +211,18 @@ public class Actor extends Group implements Serializable {
         }
     }
 
+    /*
+     *
+     */
+    /**
+     *
+     * @param image  the image representing the actor
+     * @param row    the position of the actor on the board
+     * @param column the position of the actor on the board
+     *
+     *
+     * @return the requested actor
+     */
     public static Actor getActor(Image image, int row, int column) {
         if (image == WALL_IMAGE)
             return getActor(WALL, row, column, (r, c) -> null);
@@ -237,6 +236,12 @@ public class Actor extends Group implements Serializable {
             return null;
     }
 
+    /**
+     *
+     * @param actor the actor to check
+     *
+     * @return the character of the actor
+     */
     public static char getCharacter(Actor actor) {
         if (actor instanceof Wall)
             return WALL;
